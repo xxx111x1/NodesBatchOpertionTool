@@ -1,0 +1,28 @@
+connectionSettings:
+    # ip list
+    ips: [40.83.214.29,40.83.214.92,13.91.92.152]
+    ipsPassword: [52.187.13.120,120.92.100.122]
+    ipsKey: [138.91.154.40,138.91.154.40]
+    
+    #method should be "password" or "key"
+    method: key
+    username: prismadmin
+    password: 1qaz@WSX3edc
+    # This is used for key login
+    keyPhrase: d2016H1-Prism
+    keyPath: "e:/Document/key.pem"
+    
+actions:
+    uploadFiles:
+        - sourceFileFullPath: "E:/Document/resources/elasticsearch/jvm.options"
+          destinyDirectory: /etc/elasticsearch
+          destinyFileName: "jvm.options"
+    runCommands: ["sudo service elasticsearch restart"]
+    customActions:
+        - deployElasticSearch:
+            uploadFiles:
+                - sourceFileFullPath: "e:/Document/key.pem"
+                  destinyDirectory: /etc/test123
+                  destinyFileName: "key.pem"
+        - kibana:
+            shellPath: ""
